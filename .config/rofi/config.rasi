@@ -1,0 +1,9 @@
+configuration{
+    drun-display-format: "{icon} {name}";
+    font:"JetBrainsMonoNerdFontMono-Regular 12";
+    show-icons:false;
+}
+
+
+
+@theme 'dmenu.rasi'

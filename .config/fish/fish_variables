@@ -1,0 +1,18 @@
+# This file contains fish universal variable definitions.
+# VERSION: 3.0
+SETUVAR EDITOR:nvim
+SETUVAR --export FZF_CTRL_T_COMMAND:fd\x20\x2d\x2dtype\x20f\x20\x2d\x2dhidden\x20\x2d\x2dstrip\x2dcwd\x2dprefix
+SETUVAR --export FZF_CTRL_T_OPTS:\x2d\x2dpreview\x20\x27bat\x20\x2d\x2dstyle\x3dnumbers\x20\x2d\x2dcolor\x3dalways\x20\x7b\x7d\x27
+SETUVAR --export FZF_DEFAULT_COMMAND:fd\x20\x2d\x2dtype\x20f\x20\x2d\x2dhidden\x20\x2d\x2dstrip\x2dcwd\x2dprefix
+SETUVAR --export FZF_DEFAULT_OPTS:\x2d\x2dheight\x2040\x25\x20\x2d\x2dlayout\x3dreverse\x20\x2d\x2dborder
+SETUVAR --export GPG_TTY:/dev/pts/11
+SETUVAR --export LESSHISTFILE:/home/david/\x2elocal/state/lesshst
+SETUVAR --export MANPAGER:bat\x20\x2dl\x20man\x20\x2dp
+SETUVAR VISUAL:nvim
+SETUVAR XDG_CACHE_HOME:\x24HOME/\x2ecache
+SETUVAR XDG_CONFIG_HOME:\x24HOME/\x2econfig
+SETUVAR XDG_DATA_HOME:\x24HOME/\x2elocal/share
+SETUVAR XDG_STATE_HOME:\x24HOME/\x2elocal/state
+SETUVAR --export YARN_CONFIG:/home/david/\x2econfig/yarn/config
+SETUVAR __fish_initialized:4300
+SETUVAR fish_user_paths:/home/david/\x2ecargo/bin\x1e/home/david/\x2elocal/bin\x1e/usr/bin

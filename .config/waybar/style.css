@@ -1,0 +1,78 @@
+
+* {
+  all:unset;
+  font-family: "JetBrainsMono Nerd Font", sans-serif;
+  font-size: 15px;
+}
+
+@import url("/home/david/.cache/wal/colors-waybar.css");
+@define-color red       #f38ba8;
+
+window#waybar {
+  background-color: @background;
+  /* color: @foreground; */
+  border-bottom: 1px solid @color0;
+}
+
+tooltip {
+    background-color: @background;
+    border: 1px solid @surface0;
+    border-radius: 8px;
+    padding: 6px 10px;
+}
+
+tooltip label {
+    color: @foreground;
+}
+
+#workspaces,
+#clock,
+#pulseaudio,
+#battery,
+#network,
+#cpu,
+#memory,
+#backlight,
+#power-profiles-daemon{
+    color: @foreground;
+    padding: 4px 4px;
+    margin: 4px 4px;
+    border-radius: 10px;
+}
+
+
+/* ---------- workspaces ---------- */
+
+#workspaces {
+    padding: 2px 6px;
+}
+
+#workspaces button {
+    padding: 2px 8px;
+    margin: 2px;
+    border-radius: 8px;
+    color: @color1;
+    font-size: 20px;
+}
+
+#workspaces button.empty {
+    color: @color0;
+}
+
+#workspaces button.active {
+    color: @foreground;
+    font-weight: bold;
+}
+
+#workspaces button.urgent {
+    background-color: @foreground;
+    color: @background;
+}
+
+/* ---------- clock ---------- */
+
+#clock {
+    color: @foreground;
+    font-weight: bold;
+}
+

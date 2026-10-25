@@ -1,0 +1,176 @@
+    {
+  "layer": "top",
+  "position": "top",
+  "exclusive":true,
+  // "margin-top": 10,
+  // "margin-bottom":5,
+  "modules-left": ["hyprland/workspaces"],
+  "modules-center": ["hyprland/window"],
+  "modules-right": [
+      "group/expand",
+      "tray",
+      "pulseaudio",
+      "backlight",
+      "network",
+      "battery",
+      "power-profiles-daemon",
+      "clock"
+    ],
+  "reload_style_on_change":true,
+
+  "hyprland/window": {
+    "format": "{title}",
+    "icon": true,
+    "separate-outputs": true,
+    "icon-size": 18,
+    "tooltip": false
+  },
+
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "tooltip": false,
+    "all-outputs": false,
+    "sort-by-number": true,
+    "on-click-window": "hyprctl dispatch hl.dsp.focus({workspace = hl.get_window('address:{address}').workspace})"
+  },
+  
+  "group/volight":{
+      "orientation": "inherit",
+      "drawer": {
+        "transition-duration": 500,
+        "children-class": "not-power",
+        "transition-left-to-right": true,
+        "click-to-reveal": true
+      },
+      "modules": [
+        "custom/volight",
+        "pulseaudio",
+        "backlight"
+      ]
+    }, 
+
+  "group/wifibt":{
+      "orientation": "inherit",
+      "drawer": {
+        "transition-duration": 500,
+        "children-class": "not-power",
+        "transition-left-to-right": false,
+        "click-to-reveal": true
+      },
+      "modules": [
+        "custom/wifibt",
+        // "bluetooth",
+        "network"
+      ]
+    }, 
+
+
+  "custom/wifibt":{
+    // "format" : " 󰤨"
+    "format" : "󰤨"
+  },
+
+  "custom/volight":{
+    "format" : "󰕾 󰃠"
+  },
+
+
+  "clock": {
+  	"format": "{:%Y-%m-%d  󰥔 %I:%M %p}",
+    "tooltip-format": "{calendar}",
+   	 "calendar": {
+        "mode": "month",
+        "weeks-pos": "left",
+        "iso8601": true,
+        "show-weeks": true,
+        "format": {
+            "months": "<span color='#ffead3'><b>{}</b></span>",
+            "days": "<span color='#ecc6d9'><b>{}</b></span>",
+            "weeks": "<span color='#99ffdd'><b>W{:%V}</b></span>",
+            "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+            "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+        }
+    }
+  },
+
+  "pulseaudio": {
+    "format": "{icon}  {volume}%",
+    "format-bluetooth": "󰂱 {volume}%",
+    "format-muted": "󰖁",
+    "scroll-step": 1,
+    "on-click": "pavucontrol",
+    "ignored-sinks": ["Easy Effects Sink"],
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "󰋎",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["󰖀", "󰕾"]
+    },
+    "tooltip-format": "Volume: {volume}%"
+  },
+
+  "network": {
+    "interface": "wlo1",
+    "format": "{ifname}",
+    "format-wifi": "{icon} {essid}",
+    "format-ethernet": "󰈀  {ipaddr}/{cidr}",
+    "format-disconnected": "󰤭 Disconnected",
+    "max-length": 50,
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "tooltip-format": "Connected to {essid}",
+    "on-click" : "ghostty -e ~/.config/waybar/scripts/nmtui.sh"
+  },
+
+  "bluetooth": {
+    "format": "",
+    "format-on": "󰂲  Disconnected",
+    "format-disabled": "Disabled",
+	  "format-connected": " {device_alias}",
+	  "format-connected-battery": "󰂱 {device_alias}",
+    "on-click": "ghostty -e ~/.config/waybar/scripts/bluetooth.sh"
+  },
+
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon} {percent}%",
+    "format-icons": ["󰃞", "󰃟", "󰃠"]
+  },
+
+  "custom/weather": {
+    "exec": "${HOME}/.config/waybar/scripts/get_weather.sh Morshi+MH",
+    "return-type": "json",
+    "format": "{}",
+    "tooltip": true,
+    "interval": 3600
+  },
+
+  "battery": {
+      	"interval": 60,
+      	"states": {
+       		"warning": 15,
+       		"critical": 5
+     	},
+      	"events": {
+       		"on-discharging-warning": "notify-send -u normal 'Low Battery'",
+       		"on-discharging-critical": "notify-send -u critical 'Very Low Battery'",
+       		"on-charging-100": "notify-send -u normal 'Battery Full!'",
+       		"on-discharging": "notify-send -u normal 'Power Switch' Discharging",
+       		"on-charging": "notify-send -u normal 'Power Switch' Charging'"
+      	},
+      	"format": "{icon} {capacity}%",
+      	"format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+      	"max-length": 25
+    },
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "format-icons": {
+        "default": "",
+        "performance": "",
+        "balanced": "",
+        "power-saver": ""
+    }
+  }
+}

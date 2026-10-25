@@ -1,0 +1,4 @@
+[[mgr.prepend_keymap]]
+on = "b"
+run = "shell -- setbg %h"
+desc = "set the background with b"
