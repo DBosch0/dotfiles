@@ -7,7 +7,7 @@ SETUVAR --export FZF_DEFAULT_COMMAND:fd\x20\x2d\x2dtype\x20f\x20\x2d\x2dhidden\x
 SETUVAR --export FZF_DEFAULT_OPTS:\x2d\x2dheight\x2040\x25\x20\x2d\x2dlayout\x3dreverse\x20\x2d\x2dborder
 SETUVAR --export GPG_TTY:/dev/pts/11
 SETUVAR --export LESSHISTFILE:/home/david/\x2elocal/state/lesshst
-SETUVAR --export MANPAGER:bat\x20\x2dl\x20man\x20\x2dp
+SETUVAR --export MANPAGER:bat\x20\x2dl\x20man\x20\x2d\x2dstyle\x3dplain\x20\x2d\x2dstrip\x2dansi\x3dalways
 SETUVAR VISUAL:nvim
 SETUVAR XDG_CACHE_HOME:\x24HOME/\x2ecache
 SETUVAR XDG_CONFIG_HOME:\x24HOME/\x2econfig
