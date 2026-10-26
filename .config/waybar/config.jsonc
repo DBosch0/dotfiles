@@ -172,5 +172,11 @@
         "balanced": "",
         "power-saver": ""
     }
+  },
+  "tray": {
+    "format": "{icon}",
+    "tooltip": true,
+    "icon-size": 18,
+    "spacing": 0
   }
 }

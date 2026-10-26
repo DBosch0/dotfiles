@@ -6,7 +6,6 @@
 }
 
 @import url("/home/david/.cache/wal/colors-waybar.css");
-@define-color red       #f38ba8;
 
 window#waybar {
   background-color: @background;
@@ -33,6 +32,7 @@ tooltip label {
 #cpu,
 #memory,
 #backlight,
+#tray,
 #power-profiles-daemon{
     color: @foreground;
     padding: 4px 4px;
@@ -56,7 +56,7 @@ tooltip label {
 }
 
 #workspaces button.empty {
-    color: @color0;
+    color: @background;
 }
 
 #workspaces button.active {
@@ -76,3 +76,33 @@ tooltip label {
     font-weight: bold;
 }
 
+#tray {
+    padding: 2px 10px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    background-color: @foreground;
+    border-radius: 8px;
+}
+
+#tray menu {
+    background-color: @background; /* Set desired background color */
+    color: @foreground;            /* Set text color */
+    font-size: 13px;           /* Adjust font size */
+    border-radius: 8px;        /* Optional: rounded corners */
+    padding: 4px 0;            /* Optional: vertical padding */
+}
+
+#tray menu menuitem {
+    background-color: transparent; /* Default state */
+    padding: 6px 14px;             /* Adjust item padding */
+}
+
+#tray menu menuitem:hover {
+    background-color: @foreground; /* Hover state background */
+    color: @background;            /* Hover state text color */
+}
