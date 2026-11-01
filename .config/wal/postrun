@@ -30,3 +30,6 @@ fix_sequences() {
 fix_sequences <"${XDG_CACHE_HOME:-$HOME/.cache}/wal/sequences"
 
 pkill dunst; setsid -f dunst
+# Ghostty keeps one background process and only reads its config at startup,
+# so tell it to reload the new pywal colors (SIGUSR2 = reload config).
+pkill -USR2 -x ghostty

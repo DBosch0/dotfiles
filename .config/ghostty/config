@@ -44,6 +44,6 @@
 
 #background-opacity=0.8
 font-family = JetBrains Mono
-config-file  = /home/david/.cache/wal/colors-ghostty
+config-file  = /home/david/.cache/wal/ghostty.conf
 mouse-hide-while-typing = true
 
