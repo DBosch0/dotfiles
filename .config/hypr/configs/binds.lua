@@ -16,13 +16,13 @@ hl.bind(key("Q", mod),      hl.dsp.window.close())
 hl.bind(key("RETURN", mod), exec(vars.terminal))
 hl.bind(key("M", mod),      exec("hyprshutdown")) -- graceful logout
 hl.bind(key("R", mod),      exec(vars.terminal .. " -e " .. vars.fileManager))
-hl.bind(key("V", mod),      hl.dsp.window.float({ action = "toggle" }))
+hl.bind(key("V", mod),      exec("cliphist list | rofi -dmenu | cliphist decode | wl-copy"))
 hl.bind(key("D", mod),      exec(vars.menu))
-hl.bind(key("P", mod),      hl.dsp.layout("focusmaster")) -- master layout: focus the master window
+-- hl.bind(key("P", mod),      hl.dsp.layout("focusmaster")) -- master layout: focus the master window
 hl.bind(key("J", mod),      hl.dsp.layout("cyclenext"))   -- master layout: focus the next window
+hl.bind(key("K", mod),      hl.dsp.layout("cycleprev")) 
 hl.bind(key("B", mod),      exec(vars.browser))
 hl.bind(key("ESCAPE", "CTRL"), exec("pkill waybar || waybar"))
-hl.bind(key("ESCAPE", mod), exec("~/.config/rofi/scripts/powermenu.sh"))
 hl.bind(key("L", mod),      exec("hyprlock"))
 hl.bind(key("F", mod),      hl.dsp.window.fullscreen({ mode = "fullscreen" }))
 -- hl.bind(key("P", mod), exec("~/.local/bin/walset.sh"))
@@ -31,9 +31,10 @@ hl.bind(key("TAB", mod),   hl.dsp.focus({ workspace = "previous" }))
 hl.bind(key("SPACE", mod), hl.dsp.layout("swapwithmaster"))
 
 -- Utilities
--- hl.bind(key("PRINT", mod),          exec("hyprshot -m output"))
--- hl.bind(key("PRINT", mod, "SHIFT"), exec("hyprshot -m region"))
--- hl.bind(key("C", mod, "SHIFT"),     exec("hyprpicker -a"))
+hl.bind(key("PRINT", mod),          exec("hyprshot -m window"))
+hl.bind(key("PRINT"),               exec("hyprshot -m output"))
+hl.bind(key("PRINT", mod, "SHIFT"), exec("hyprshot -m region"))
+
 
 -- Move focus with mod + arrow keys
 hl.bind(key("left", mod),  hl.dsp.focus({ direction = "left" }))
@@ -54,7 +55,17 @@ end
 
 -- Special workspace (scratchpad)
 hl.bind(key("S", mod),          hl.dsp.workspace.toggle_special("magic"))
-hl.bind(key("S", mod, "SHIFT"), hl.dsp.window.move({ workspace = "special:magic" }))
+-- mod + CTRL + S: send the window to the scratchpad, or bring it back to the current workspace
+hl.bind(key("S", mod, "CTRL"), function()
+    local win = hl.get_active_window()
+    if not win then return end
+    if win.workspace.special then
+        local current = hl.get_active_monitor().active_workspace
+        hl.dispatch(hl.dsp.window.move({ workspace = current.name }))
+    else
+        hl.dispatch(hl.dsp.window.move({ workspace = "special:magic" }))
+    end
+end)
 
 -- Scroll through existing workspaces with mod + scroll
 hl.bind(key("mouse_down", mod), hl.dsp.focus({ workspace = "e+1" }))
