@@ -11,6 +11,7 @@ if status is-login; and test (tty) = /dev/tty1; and not pgrep -x Hyprland >/dev/
 end
 
 source ~/.cache/wal/colors.fish
+set -g fish_key_bindings fish_vi_key_bindings
 
 zoxide init fish | source
 starship init fish | source 
