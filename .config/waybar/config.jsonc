@@ -1,7 +1,7 @@
     {
   "layer": "top",
   "position": "top",
-  "exclusive":true,
+  "exclusive": false, // space is kept clear by the top gaps_out in hyprland.lua, so rofi can draw over waybar
   // "margin-top": 10,
   // "margin-bottom":5,
   "modules-left": ["hyprland/workspaces"],

@@ -65,7 +65,8 @@ hl.env("HYPRCURSOR_SIZE", "24")
 hl.config({
     general = {
         gaps_in  = 5,
-        gaps_out = 5,
+        -- top = 5 + 41px waybar height: waybar has "exclusive": false so rofi can draw over it
+        gaps_out = { top = 46, right = 5, bottom = 5, left = 5 },
 
         border_size = 2,
 
